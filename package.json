@@ -1,0 +1,16 @@
+{
+  "name": "Networks and Distributed Systems CA3",
+  "version": "1.0.0",
+  "description": "Socket.io assignment",
+  "main": "server.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "Keith Basaran",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0",
+    "socket.io": "^1.7.3"
+  }
+}

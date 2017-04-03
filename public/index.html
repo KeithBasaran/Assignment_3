@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Socket.io Assignment</title>
+        <meta charset = "utf-8">
+        <style>
+			ul {
+				list-style-type: none;
+			}
+        </style>
+    </head>
+    <body>
+        <h1>Socket.io Chatroom</h1>
+        <p id = "clientId"></p>
+        <div id = "clients"></div>
+        
+        <ul id = "messages"></ul>
+        <form action = "">
+            <input id = "m" autocomplete = "off" />
+            <button>Send</button>
+        </form>
+        
+        <script src = "/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+			
+            $(function () {
+			// Variable used to connect to the server.
+                var socket = io.connect();				
+				 
+                $("form").submit(function () {
+                    socket.emit("chat message", $("#m").val(), socket.id);
+                    $("#").val("");
+                    return false;
+                });
+                
+                socket.on("chat message", function(msg, userId) {
+                    $("#messages").append($("<li>").text("User: " + (userId))).append($("<li>").text(msg));
+                });
+            
+            socket.on("connect", function() {
+                document.getElementById("clientId").innerHTML = "Your User ID is " + socket.id;
+           });
+
+        });
+        </script>
+    </body>
+</html>
